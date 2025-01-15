@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Java Program Execution Flow</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2.2em;
+      }
+
+      .container {
+        background: white;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .step {
+        margin-bottom: 30px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 6px;
+        border-left: 4px solid #3498db;
+      }
+
+      .step h2 {
+        color: #3498db;
+        margin-top: 0;
+        font-size: 1.4em;
+      }
+
+      .image-wrapper {
+        margin: 20px 0;
+        text-align: center;
+      }
+
+      .image-wrapper img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .language-toggle {
+        position: sticky;
+        top: 0;
+        background: white;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 0;
+        z-index: 100;
+      }
+
+      .toggle-group {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      .toggle-group label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
+
+        .container {
+          padding: 15px;
+        }
+
+        .step {
+          padding: 15px;
+        }
+
+        h1 {
+          font-size: 1.8em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="language-toggle">
+        <div class="toggle-group">
+          <label>
+            <input type="radio" name="language" value="en" checked />
+            English
+          </label>
+          <label>
+            <input type="radio" name="language" value="fr" />
+            Français
+          </label>
+          <label>
+            <input type="radio" name="language" value="es" />
+            Español
+          </label>
+          <label>
+            <input type="radio" name="language" value="vi" />
+            Tiếng Việt
+          </label>
+        </div>
+      </div>
+
+      <div data-lang="en">
+        <h1>How Java Programs Execute</h1>
+
+        <div class="step">
+          <h2>1. Writing the Source Code</h2>
+          <p>
+            We start by writing Java code in an IDE like IntelliJ IDEA. At this stage, our program is just text
+            following Java syntax rules, saved in .java files.
+          </p>
+          <div class="image-wrapper">
+            <img src="code.png" alt="Screenshot of Java code in IntelliJ IDEA" />
+          </div>
+        </div>
+
+        <div class="step">
+          <h2>2. Compilation to Bytecode</h2>
+          <p>
+            When we click "Run" in our IDE, the Java compiler (javac) first converts our source code into bytecode. This
+            bytecode is stored in .class files and is platform-independent, meaning it can run on any device that has a
+            JVM.
+          </p>
+          <div class="image-wrapper">
+            <img src="bytecode.png" alt="Diagram showing compilation process" />
+          </div>
+        </div>
+
+        <div class="step">
+          <h2>3. JVM and JIT Compilation</h2>
+          <p>
+            The Java Virtual Machine (JVM) loads the bytecode and uses its Just-In-Time (JIT) compiler to translate it
+            into machine code. This step is crucial because CPUs can only execute native machine code - they cannot
+            directly run bytecode. The JIT compiler converts the bytecode into the specific machine code for your
+            computer's architecture. The JVM doesn't interact with hardware directly - it must go through the operating
+            system, which acts as the ultimate authority for all hardware resources.
+          </p>
+        </div>
+
+        <div class="step">
+          <h2>4. Program Execution and Resource Management</h2>
+          <p>
+            Finally, your computer's CPU executes the machine code, but everything goes through the operating system.
+            The OS is like a "boss" that controls all hardware resources. When our Java program needs things like
+            threads (for computation), memory, or network access, the JVM must request these from the OS. The OS then
+            manages these resources, providing virtual memory, scheduling CPU time, and handling I/O operations. This is
+            why we say the OS is the ultimate authority - even the JVM must follow the OS's rules and permissions.
+          </p>
+        </div>
+      </div>
+
+      <div data-lang="fr">
+        <h1>Comment s'exécutent les programmes Java</h1>
+
+        <div class="step">
+          <h2>1. Écriture du code source</h2>
+          <p>
+            Nous commençons par écrire le code Java dans un IDE comme IntelliJ IDEA. À ce stade, notre programme n'est
+            que du texte suivant les règles de syntaxe Java, sauvegardé dans des fichiers .java.
+          </p>
+          <div class="image-wrapper">
+            <img src="code.png" alt="Capture d'écran du code Java dans IntelliJ IDEA" />
+          </div>
+        </div>
+
+        <div class="step">
+          <h2>2. Compilation en bytecode</h2>
+          <p>
+            Lorsque nous cliquons sur "Run" dans notre IDE, le compilateur Java (javac) convertit d'abord notre code
+            source en bytecode. Ce bytecode est stocké dans des fichiers .class et est indépendant de la plateforme, ce
+            qui signifie qu'il peut s'exécuter sur n'importe quel appareil disposant d'une JVM.
+          </p>
+          <div class="image-wrapper">
+            <img src="bytecode.png" alt="Diagramme montrant le processus de compilation" />
+          </div>
+        </div>
+
+        <div class="step">
+          <h2>3. JVM et compilation JIT</h2>
+          <p>
+            La Machine Virtuelle Java (JVM) charge le bytecode et utilise son compilateur Just-In-Time (JIT) pour le
+            traduire en code machine. Cette étape est cruciale car les CPUs ne peuvent exécuter que du code machine
+            natif - ils ne peuvent pas exécuter directement le bytecode. Le compilateur JIT convertit le bytecode en
+            code machine spécifique à l'architecture de votre ordinateur. La JVM n'interagit pas directement avec le
+            matériel - elle doit passer par le système d'exploitation, qui agit comme l'autorité ultime pour toutes les
+            ressources matérielles.
+          </p>
+        </div>
+
+        <div class="step">
+          <h2>4. Exécution du programme et gestion des ressources</h2>
+          <p>
+            Finalement, le CPU de votre ordinateur exécute le code machine, mais tout passe par le système
+            d'exploitation. L'OS est comme un "patron" qui contrôle toutes les ressources matérielles. Lorsque notre
+            programme Java a besoin de ressources comme des threads (pour le calcul), de la mémoire ou un accès réseau,
+            la JVM doit les demander à l'OS. L'OS gère ensuite ces ressources, fournissant la mémoire virtuelle,
+            planifiant le temps CPU et gérant les opérations d'entrée/sortie. C'est pourquoi nous disons que l'OS est
+            l'autorité ultime - même la JVM doit suivre les règles et les permissions de l'OS.
+          </p>
+        </div>
+      </div>
+
+      <div data-lang="es">
+        <h1>Cómo se ejecutan los programas Java</h1>
+
+        <div class="step">
+          <h2>1. Escribiendo el código fuente</h2>
+          <p>
+            Comenzamos escribiendo código Java en un IDE como IntelliJ IDEA. En esta etapa, nuestro programa es solo
+            texto que sigue las reglas de sintaxis de Java, guardado en archivos .java.
+          </p>
+          <div class="image-wrapper">
+            <img src="code.png" alt="Captura de pantalla del código Java en IntelliJ IDEA" />
+          </div>
+        </div>
+
+        <div class="step">
+          <h2>2. Compilación a bytecode</h2>
+          <p>
+            Cuando hacemos clic en "Run" en nuestro IDE, el compilador de Java (javac) primero convierte nuestro código
+            fuente en bytecode. Este bytecode se almacena en archivos .class y es independiente de la plataforma, lo que
+            significa que puede ejecutarse en cualquier dispositivo que tenga una JVM.
+          </p>
+          <div class="image-wrapper">
+            <img src="bytecode.png" alt="Diagrama que muestra el proceso de compilación" />
+          </div>
+        </div>
+
+        <div class="step">
+          <h2>3. JVM y compilación JIT</h2>
+          <p>
+            La Máquina Virtual de Java (JVM) carga el bytecode y usa su compilador Just-In-Time (JIT) para traducirlo a
+            código máquina. Este paso es crucial porque las CPUs solo pueden ejecutar código máquina nativo - no pueden
+            ejecutar bytecode directamente. El compilador JIT convierte el bytecode en código máquina específico para la
+            arquitectura de tu computadora. La JVM no interactúa directamente con el hardware - debe pasar por el
+            sistema operativo, que actúa como la autoridad máxima para todos los recursos de hardware.
+          </p>
+        </div>
+
+        <div class="step">
+          <h2>4. Ejecución del programa y gestión de recursos</h2>
+          <p>
+            Finalmente, la CPU de tu computadora ejecuta el código máquina, pero todo pasa por el sistema operativo. El
+            SO es como un "jefe" que controla todos los recursos de hardware. Cuando nuestro programa Java necesita
+            recursos como hilos (para computación), memoria o acceso a la red, la JVM debe solicitarlos al SO. El SO
+            entonces gestiona estos recursos, proporcionando memoria virtual, programando tiempo de CPU y manejando
+            operaciones de entrada/salida. Por esto decimos que el SO es la autoridad máxima - incluso la JVM debe
+            seguir las reglas y permisos del SO.
+          </p>
+        </div>
+      </div>
+
+      <div data-lang="vi">
+        <h1>Cách thức thực thi chương trình Java</h1>
+
+        <div class="step">
+          <h2>1. Viết mã nguồn</h2>
+          <p>
+            Chúng ta bắt đầu bằng việc viết mã Java trong một IDE như IntelliJ IDEA. Ở giai đoạn này, chương trình của
+            chúng ta chỉ là văn bản tuân theo các quy tắc cú pháp Java, được lưu trong các tệp .java.
+          </p>
+          <div class="image-wrapper">
+            <img src="code.png" alt="Ảnh chụp màn hình mã Java trong IntelliJ IDEA" />
+          </div>
+        </div>
+
+        <div class="step">
+          <h2>2. Biên dịch thành bytecode</h2>
+          <p>
+            Khi chúng ta nhấp vào "Run" trong IDE, trình biên dịch Java (javac) trước tiên chuyển đổi mã nguồn của chúng
+            ta thành bytecode. Bytecode này được lưu trữ trong các tệp .class và độc lập với nền tảng, có nghĩa là nó có
+            thể chạy trên bất kỳ thiết bị nào có JVM.
+          </p>
+          <div class="image-wrapper">
+            <img src="bytecode.png" alt="Sơ đồ thể hiện quá trình biên dịch" />
+          </div>
+        </div>
+
+        <div class="step">
+          <h2>3. JVM và biên dịch JIT</h2>
+          <p>
+            Máy Ảo Java (JVM) tải bytecode và sử dụng trình biên dịch Just-In-Time (JIT) để dịch nó thành mã máy. Bước
+            này rất quan trọng vì CPU chỉ có thể thực thi mã máy gốc - chúng không thể chạy trực tiếp bytecode. Trình
+            biên dịch JIT chuyển đổi bytecode thành mã máy cụ thể cho kiến trúc máy tính của bạn. JVM không tương tác
+            trực tiếp với phần cứng - nó phải thông qua hệ điều hành, đóng vai trò như người quản lý tối cao đối với tất
+            cả các tài nguyên phần cứng.
+          </p>
+        </div>
+
+        <div class="step">
+          <h2>4. Thực thi chương trình và quản lý tài nguyên</h2>
+          <p>
+            Cuối cùng, CPU của máy tính thực thi mã máy, nhưng mọi thứ đều phải thông qua hệ điều hành. Hệ điều hành
+            giống như một "ông chủ" kiểm soát tất cả tài nguyên phần cứng. Khi chương trình Java của chúng ta cần tài
+            nguyên như luồng (để tính toán), bộ nhớ hoặc truy cập mạng, JVM phải yêu cầu từ hệ điều hành. Hệ điều hành
+            sau đó quản lý các tài nguyên này, cung cấp bộ nhớ ảo, lập lịch thời gian CPU và xử lý các hoạt động
+            nhập/xuất. Đó là lý do tại sao chúng ta nói hệ điều hành là người có thẩm quyền cao nhất - ngay cả JVM cũng
+            phải tuân theo các quy tắc và quyền hạn của hệ điều hành.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Language toggle functionality
+      document.querySelectorAll('input[name="language"]').forEach((radio) => {
+        radio.addEventListener("change", (e) => {
+          const selectedLang = e.target.value;
+          // Hide all language elements first
+          document.querySelectorAll("[data-lang]").forEach((el) => {
+            if (el.dataset.lang === selectedLang) {
+              el.style.display = "block"; // or 'table-cell' for td elements
+            } else {
+              el.style.display = "none";
+            }
+          });
+          // Special handling for table cells
+          document.querySelectorAll("td[data-lang], th[data-lang]").forEach((el) => {
+            if (el.dataset.lang === selectedLang) {
+              el.style.display = "table-cell";
+            } else {
+              el.style.display = "none";
+            }
+          });
+        });
+      });
+      // Initialize English as default
+      document.querySelectorAll("[data-lang]").forEach((el) => {
+        if (el.dataset.lang === "en") {
+          el.style.display =
+            el.tagName.toLowerCase() === "td" || el.tagName.toLowerCase() === "th" ? "table-cell" : "block";
+        } else {
+          el.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
